@@ -1,0 +1,41 @@
+[
+    {
+        "questionId": "1",
+        "question": "What is the capital of France?",
+        "choiceA": "Berlin",
+        "choiceB": "Madrid",
+        "choiceC": "Paris",
+        "choiceD": "Rome",
+        "examDuration": "10",
+        "class": "Geography",
+        "topic": "World Capitals",
+        "subject": "Social Studies",
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "question": "Which planet is known as the Red Planet?",
+        "choiceA": "Mars",
+        "choiceB": "Venus",
+        "choiceC": "Jupiter",
+        "choiceD": "Saturn",
+        "examDuration": "10",
+        "class": "Astronomy",
+        "topic": "Solar System",
+        "subject": "Science",
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "question": "What is 2 + 2?",
+        "choiceA": "3",
+        "choiceB": "4",
+        "choiceC": "5",
+        "choiceD": "6",
+        "examDuration": "10",
+        "class": "Math",
+        "topic": "Basic Arithmetic",
+        "subject": "Math",
+        "questionnaireId": "1"
+    }
+]

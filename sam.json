@@ -1,0 +1,242 @@
+[
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:8B:BA",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:60:78",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:56:05",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:55:78",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:4E:15",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:8C:10",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:74:90",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:70:4A",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:8C:CF",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:89:E9",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:55:92",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:56:41",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:60:32",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:4E:49",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:5B:DD",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:71:35",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "8C:AA:B5:D3:BA:DB",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:5B:D7",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:52:3B",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "1",
+        "deviceId": "24:D7:EB:EF:5F:BE",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:8B:BA",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:60:78",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:56:05",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:55:78",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:4E:15",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "2",
+        "deviceId": "24:D7:EB:EF:8C:10",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:74:90",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:70:4A",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:8C:CF",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:89:E9",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:55:92",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:56:41",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:60:32",
+        "answer": 4,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:4E:49",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:5B:DD",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:71:35",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "8C:AA:B5:D3:BA:DB",
+        "answer": 3,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:5B:D7",
+        "answer": 1,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:52:3B",
+        "answer": 2,
+        "questionnaireId": "1"
+    },
+    {
+        "questionId": "3",
+        "deviceId": "24:D7:EB:EF:5F:BE",
+        "answer": 1,
+        "questionnaireId": "1"
+    }
+]

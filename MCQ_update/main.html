@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Exam</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #11ca96, #ffffff);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo {
+            height: 100px;
+            margin-left: 30px;
+        }
+
+        .header-content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        header p {
+            font-size: 16px;
+            margin: 10px 0 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #333;
+            width: 90%;
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        #header-heading {
+            font-size: 30px;
+            color: whitesmoke;
+            margin-bottom: 20px;
+        }
+
+        #question {
+            font-size: 2.5rem;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        #options {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            background-color: #31a099;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .option-btn:hover {
+            background-color: #1a605b;
+            transform: scale(1.02);
+        }
+
+        .selected {
+            background-color: #28a745 !important;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        #pauseButton {
+            background-color: #ffc107;
+        }
+
+        #pauseButton:hover {
+            background-color: #e0a800;
+        }
+
+        #resumeButton {
+            background-color: #17a2b8;
+        }
+
+        #resumeButton:hover {
+            background-color: #138496;
+        }
+
+        #restartButton {
+            background-color: #dc3545;
+        }
+
+        #restartButton:hover {
+            background-color: #c82333;
+        }
+
+        #cancelButton {
+            background-color: #dc3545;
+        }
+
+        #cancelButton:hover {
+            background-color: #c82333;
+        }
+        
+        #viewResultsButton {
+            background-color: #dc3545;
+        }
+
+        #viewResultsButton:hover {
+            background-color: #c82333;
+        }
+
+        #analysisResults {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        #analysisResults table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #analysisResults th, #analysisResults td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #analysisResults th {
+            background-color: #31a099;
+            color: white;
+        }
+
+        #analysisResults tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #analysisResults tr:hover {
+            background-color: #e2e2e2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="vidya-shakti.png" alt="MCQ Test Logo" class="logo">
+        <div class="header-content">
+            <h1 id="header-heading">MCQ Test Platform</h1>
+            <p>Test your knowledge with our interactive multiple-choice questions.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="timer">Time to answer remaining : 20 sec</div>
+        <h1 id="question">Loading question...</h1>
+        <div id="options"></div>  
+        <button id="pauseButton" onclick="pauseTest()">Pause</button>
+        <button id="resumeButton" onclick="resumeTest()" style="display: none;">Resume</button>
+        <button id="restartButton" onclick="startExam()" style="display: none;">Restart Test</button>
+        <button id="cancelButton" onclick="cancelExam()">Cancel</button>
+        <button id="viewResultsButton" onclick="viewResults()" style="display: none;">View Results</button>      
+    </div>
+
+    <footer>
+        <p>&copy; 2025 MCQ Test Platform. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

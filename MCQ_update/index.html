@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start MCQ Test</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #11ca96, #ffffff);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Added for logo positioning */
+        }
+
+        .logo {
+            height: 100px;
+            position: absolute; /* Position the logo absolutely */
+            left: 50px; /* Adjust as needed */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #333;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        #startButton {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #startButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #startButton:hover:enabled {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .info {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Add your logo here -->
+        <img src="vidya-shakti.png" alt="MCQ Test Logo" class="logo">
+        <div>
+            <h1>MCQ Test Platform</h1>
+            <p>Test your knowledge with our interactive multiple-choice questions.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Welcome to the Test!</h2>
+        <div class="info" id="examInfo">
+            <p>Please send question paper to begin exam.</p>
+        </div>
+        <button onclick="startExam()" id="startButton" type="button" disabled>Start Test</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 MCQ Test Platform. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkQuestions() {
+            fetch('/api/checkQuestions')
+                .then(response => response.json())
+                .then(data => {
+                    const examInfo = document.getElementById('examInfo');
+                    const startButton = document.getElementById('startButton');
+
+                    if (data.status === 'loaded') {
+                        // Display exam details
+                        examInfo.innerHTML = `
+                            <p>Class: ${data.class}</p>
+                            <p>Subject: ${data.subject}</p>
+                            <p>Topic: ${data.grade}</p>
+                            <p>Question Duration: ${data.examDuration} seconds</p>
+                        `;
+
+                        // Enable the Start Test button
+                        startButton.disabled = false;
+                    } else {
+                        // No questions loaded yet
+                        examInfo.innerHTML = '<p>Please add question paper to start the exam.</p>';
+                        startButton.disabled = true;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking questions:', error);
+                });
+        }
+        // Check questions on page load
+        checkQuestions();
+
+        // Periodically check for questions (every 2 seconds)
+        setInterval(checkQuestions, 2000);
+    </script>
+</body>
+
+</html>

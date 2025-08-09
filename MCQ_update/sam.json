@@ -1,0 +1,32 @@
+[
+    {
+        "questionId": "198",
+        "deviceId": "24:D7:EB:EF:55:11",
+        "answer": 1,
+        "questionnaireId": 38
+    },
+    {
+        "questionId": "199",
+        "deviceId": "24:D7:EB:EF:55:11",
+        "answer": 2,
+        "questionnaireId": 38
+    },
+    {
+        "questionId": "200",
+        "deviceId": "24:D7:EB:EF:55:11",
+        "answer": 3,
+        "questionnaireId": 38
+    },
+    {
+        "questionId": "201",
+        "deviceId": "24:D7:EB:EF:55:11",
+        "answer": 4,
+        "questionnaireId": 38
+    },
+    {
+        "questionId": "202",
+        "deviceId": "24:D7:EB:EF:55:11",
+        "answer": 1,
+        "questionnaireId": 38
+    }
+]   

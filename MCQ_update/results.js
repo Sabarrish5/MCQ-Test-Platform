@@ -102,12 +102,15 @@ function showIndividualPerformance() {
     } else {
         for (const deviceId in individualPerformance) {
             if (individualPerformance.hasOwnProperty(deviceId)) {
-                html += `<h4>Device ID: ${deviceId}</h4>`;
-                html += '<table><thead><tr><th>Question ID</th><th>Answer</th></tr></thead><tbody>';
-                const responses = individualPerformance[deviceId];
+                const studentData = individualPerformance[deviceId];
+                html += `<h4>Device ID: ${deviceId} (Score: ${studentData.score}/${studentData.total_questions})</h4>`;
+                html += '<table><thead><tr><th>Question ID</th><th>Submitted Answer</th><th>Status</th></tr></thead><tbody>';
+                const responses = studentData.responses;
                 for (const questionId in responses) {
                     if (responses.hasOwnProperty(questionId)) {
-                        html += `<tr><td>${questionId}</td><td>${responses[questionId]}</td></tr>`;
+                        const response = responses[questionId];
+                        const status = response.is_correct ? '<span style="color: green;">Correct</span>' : '<span style="color: red;">Incorrect</span>';
+                        html += `<tr><td>${questionId}</td><td>${response.submitted_answer}</td><td>${status}</td></tr>`;
                     }
                 }
                 html += '</tbody></table>';

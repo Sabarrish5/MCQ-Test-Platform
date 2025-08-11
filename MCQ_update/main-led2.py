@@ -4,14 +4,10 @@ import threading
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import csv
-
 import sys
 import fake_rpi
 sys.modules['RPi'] = fake_rpi.RPi
 sys.modules['RPi.GPIO'] = fake_rpi.RPi.GPIO
-
-import RPi.GPIO as GPIO
-import atexit
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +22,7 @@ currentTime = 0
 questionDuration = 10 * 1000
 examDuration = 0
 pausedTimeRemaining = 0
+correctAnswers = {}
 
 questions = []
 responses = {}
@@ -46,13 +43,35 @@ class Response:
         self.deviceID = deviceID
         self.answer = answer
 
-def fetch_questions_from_terminal():
-    global questions, examDuration, questionDuration
-    # ... (same as before)
-
 def print_responses_to_terminal():
     global responses, questions
-    # ... (same as before)
+    if not responses:
+        print("No responses received yet.")
+        return
+    question_id_to_questionnaire = {q.questionId: q.questionnaireId for q in questions}
+    with open("sam.csv", 'w', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["questionId", "deviceId", "answer", "questionnaireId"])
+        print("Responses received:")
+        json_data = []
+        for question_id, response_list in responses.items():
+            questionnaire_id = question_id_to_questionnaire.get(question_id)
+            for response in response_list:
+                writer.writerow([
+                    str(question_id),
+                    str(response.deviceID),
+                    str(response.answer),
+                    str(questionnaire_id)
+                ])
+                json_data.append({
+                    "questionId": question_id,
+                    "deviceId": response.deviceID,
+                    "answer": response.answer,
+                    "questionnaireId": questionnaire_id
+                })
+    with open("sam.json", 'w') as json_file:
+        json.dump(json_data, json_file, indent=4)
+    print("Responses saved to sam.csv and sam.json.")
 
 @app.route('/')
 def serve_index():
@@ -171,15 +190,16 @@ def get_responses_for_current_question():
 
 @app.route('/api/uploadQuestions', methods=['POST'])
 def upload_questions():
-    global questions, examDuration, questionDuration
+    global questions, examDuration, questionDuration, correctAnswers
     try:
         question_data = json.loads(request.json)
         questions = []
+        correctAnswers.clear()
         for q in question_data:
             question = Question(
                 q["questionId"],
                 q["question"],
-                [q["choiceA"], q["choiceA"], q["choiceB"], q["choiceC"], q["choiceD"]],
+                [q["choiceA"], q["choiceB"], q["choiceC"], q["choiceD"]],
                 q["examDuration"],
                 q["class"],
                 q["topic"],
@@ -187,6 +207,7 @@ def upload_questions():
                 q.get("questionnaireId")
             )
             questions.append(question)
+            correctAnswers[q["questionId"]] = q.get("correctAnswer")
 
         if questions:
             examDuration = int(questions[0].examDuration)
@@ -221,7 +242,7 @@ def check_questions():
 
 @app.route('/api/getJsonData', methods=['GET'])
 def send_response():
-    global questions
+    global questions, correctAnswers
     try:
         with open("sam.json", "r") as json_file:
             response_data = json.load(json_file)
@@ -237,7 +258,6 @@ def send_response():
                 question_count = 0
         else:
             question_count = len(questions)
-
 
         received_responses = len(response_data)
         
@@ -265,10 +285,26 @@ def send_response():
         
         for response in response_data:
             device_id = response['deviceId']
-            if device_id not in analysis["individual_performance"]:
-                analysis["individual_performance"][device_id] = {}
-            analysis["individual_performance"][device_id][response['questionId']] = response['answer']
+            question_id = response['questionId']
+            student_answer = response['answer']
             
+            is_correct = (int(student_answer) == int(correctAnswers.get(question_id, -1)))
+            
+            if device_id not in analysis["individual_performance"]:
+                analysis["individual_performance"][device_id] = {
+                    "responses": {},
+                    "score": 0,
+                    "total_questions": question_count
+                }
+
+            analysis["individual_performance"][device_id]["responses"][question_id] = {
+                "submitted_answer": student_answer,
+                "is_correct": is_correct
+            }
+            
+            if is_correct:
+                analysis["individual_performance"][device_id]["score"] += 1
+                
         return jsonify(analysis)
 
     except FileNotFoundError:
